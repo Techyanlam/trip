@@ -32,25 +32,35 @@
             font-size: 14px;
             margin-bottom: 15px;
         }
-        /* 雲端硬碟按鈕樣式 */
-        .drive-link-box {
+        /* 頂部連結按鈕區塊樣式 */
+        .top-links-box {
             text-align: center;
             margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
         }
-        .drive-btn {
+        .action-btn {
             display: inline-block;
             background-color: #1a73e8;
             color: #ffffff !important;
-            padding: 12px 24px;
+            padding: 12px 20px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 15px;
+            font-size: 14px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.15);
             transition: background-color 0.2s;
         }
-        .drive-btn:hover {
+        .action-btn:hover {
             background-color: #1557b0;
+        }
+        .food-btn {
+            background-color: #e65100;
+        }
+        .food-btn:hover {
+            background-color: #bf360c;
         }
         .hero-banner {
             width: 100%;
@@ -98,7 +108,6 @@
             line-height: 1.6;
             font-size: 14px;
         }
-        /* 確保所有連結都能清晰顯示並可點擊 */
         a.map-link {
             color: #1a0dab;
             text-decoration: underline;
@@ -138,10 +147,13 @@
     <h1>🇦🇺 悉尼2026之旅</h1>
     <div class="subtitle">行程日期：2026/07/27 - 08/03 (3大1小)</div>
 
-    <!-- Google 雲端硬碟資料夾捷徑 -->
-    <div class="drive-link-box">
-        <a href="https://drive.google.com/drive/folders/1X1ibw8x0Pzy6VTN3FzrCrHIaTyMtr0jm?usp=sharing" target="_blank" class="drive-btn">
-            📁 開啟 Google 雲端硬碟資料夾 (查看完整文件)
+    <!-- 頂部實用連結按鈕區塊 -->
+    <div class="top-links-box">
+        <a href="https://drive.google.com/drive/folders/1X1ibw8x0Pzy6VTN3FzrCrHIaTyMtr0jm?usp=sharing" target="_blank" class="action-btn">
+            📁 開啟 Google 雲端硬碟資料夾
+        </a>
+        <a href="https://www.notesbyjai.tw/2026-sydney-food-guide/" target="_blank" class="action-btn food-btn">
+            🍜 2026 雪梨美食 | 17 間必吃餐廳和甜點飲料推薦
         </a>
     </div>
 
