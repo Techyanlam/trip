@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>10 之內加減數練習</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f2f2f7;
+            color: #1c1c1e;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #8e8e93;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+        .header-panel {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            font-weight: bold;
+        }
+        .timer {
+            color: #ff9500;
+        }
+        .question-card {
+            background: #ffffff;
+            padding: 14px 18px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.25srem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .question-text {
+            font-weight: 600;
+        }
+        input {
+            width: 75px;
+            height: 44px;
+            font-size: 1.25rem;
+            text-align: center;
+            border: 2px solid #c7c7cc;
+            border-radius: 8px;
+            background-color: #f9f9fb;
+            -webkit-appearance: none;
+        }
+        input:focus {
+            border-color: #007aff;
+            background-color: #ffffff;
+            outline: none;
+        }
+        .correct {
+            border-color: #34c759 !important;
+            background-color: #e8f8ec !important;
+        }
+        .incorrect {
+            border-color: #ff3b30 !important;
+            background-color: #fde8e8 !important;
+        }
+        button {
+            width: 100%;
+            background-color: #007aff;
+            color: white;
+            border: none;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 14px;
+            margin-top: 10px;
+            margin-bottom: 40px;
+        }
+        #result-section {
+            text-align: center;
+            font-size: 1.15rem;
+            font-weight: bold;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: none;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>10 之內加減數</h1>
+    <div class="subtitle">動動腦筋，快快完成 20 道題目！</div>
+
+    <div class="header-panel">
+        <div>題數：20 題</div>
+        <div class="timer">⏱️ <span id="timer-display">00:00</span></div>
+    </div>
+
+    <!-- 靜態直接寫好 20 個輸入框，避免 iOS 动态生成失效 -->
+    <div id="quiz">
+        <!-- 題目會由下方 script 填入 -->
+    </div>
+
+    <button id="submit-btn" onclick="checkAnswers()">交卷評分</button>
+    <div id="result-section"></div>
+
+    <script>
+        const total = 20;
+        let answers = [];
+        let seconds = 0;
+        let timer = null;
+        let started = false;
+
+        function init() {
+            let html = '';
+            answers = [];
+            
+            for (let i = 1; i <= total; i++) {
+                let isAdd = Math.random() < 0.5;
+                let n1, n2, ans;
+                
+                if (isAdd) {
+                    n1 = Math.floor(Math.random() * 11);
+                    n2 = Math.floor(Math.random() * (11 - n1));
+                    ans = n1 + n2;
+                    answers.push(ans);
+                    html += `<div class="question-card"><span class="question-text">${i}. ${n1} + ${n2} =</span><input type="tel" inputmode="numeric" id="q${i}" oninput="startT()"></div>`;
+                } else {
+                    n1 = Math.floor(Math.random() * 11);
+                    n2 = Math.floor(Math.random() * (n1 + 1));
+                    ans = n1 - n2;
+                    answers.push(ans);
+                    html += `<div class="question-card"><span class="question-text">${i}. ${n1} - ${n2} =</span><input type="tel" inputmode="numeric" id="q${i}" oninput="startT()"></div>`;
+                }
+            }
+            document.getElementById('quiz').innerHTML = html;
+        }
+
+        function startT() {
+            if (started) return;
+            started = true;
+            timer = setInterval(() => {
+                seconds++;
+                let m = Math.floor(seconds / 60).toString().padStart(2, '0');
+                let s = (seconds % 60).toString().padStart(2, '0');
+                document.getElementById('timer-display').innerText = m + ':' + s;
+            }, 1000);
+        }
+
+        function checkAnswers() {
+            if (timer) clearInterval(timer);
+            let score = 0;
+            let complete = true;
+
+            for (let i = 1; i <= total; i++) {
+                let input = document.getElementById('q' + i);
+                let val = input.value.trim();
+                input.classList.remove('correct', 'incorrect');
+
+                if (val === '') {
+                    complete = false;
+                    input.classList.add('incorrect');
+                } else if (parseInt(val, 10) === answers[i - 1]) {
+                    score++;
+                    input.classList.add('correct');
+                } else {
+                    input.classList.add('incorrect');
+                }
+            }
+
+            let res = document.getElementById('result-section');
+            res.style.display = 'block';
+            let timeStr = document.getElementById('timer-display').innerText;
+
+            if (!complete) {
+                started = false;
+                timer = setInterval(() => {
+                    seconds++;
+                    let m = Math.floor(seconds / 60).toString().padStart(2, '0');
+                    let s = (seconds % 60).toString().padStart(2, '0');
+                    document.getElementById('timer-display').innerText = m + ':' + s;
+                }, 1000);
+                res.innerHTML = `<span style="color: #ff9500;">⚠️ 還有未填寫的題目！</span><br>暫得 ${score} / ${total} 分`;
+            } else {
+                res.innerHTML = `🎉 得到 ${score} / ${total} 分！<br>⏱️ 花費時間：${timeStr}<br><button style="margin-top:15px; background-color:#34c759;" onclick="location.reload()">再玩一次</button>`;
+                document.getElementById('submit-btn').style.display = 'none';
+            }
+            res.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 確保網頁載入即執行
+        window.onload = init;
+    </script>
+</body>
+</html>
