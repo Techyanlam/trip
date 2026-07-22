@@ -32,7 +32,7 @@
             font-size: 14px;
             margin-bottom: 15px;
         }
-        /* 雲端硬碟資料夾按鈕樣式 */
+        /* 雲端硬碟按鈕樣式 */
         .drive-link-box {
             text-align: center;
             margin-bottom: 20px;
@@ -40,12 +40,12 @@
         .drive-btn {
             display: inline-block;
             background-color: #1a73e8;
-            color: white;
-            padding: 10px 20px;
+            color: #ffffff !important;
+            padding: 12px 24px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 15px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.15);
             transition: background-color 0.2s;
         }
@@ -98,20 +98,20 @@
             line-height: 1.6;
             font-size: 14px;
         }
-        a.map-link, a.klook-link, a.event-link {
+        /* 確保所有連結都能清晰顯示並可點擊 */
+        a.map-link {
             color: #1a0dab;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        a.map-link:hover, a.klook-link:hover, a.event-link:hover {
             text-decoration: underline;
+            font-weight: 500;
         }
         a.klook-link {
             color: #ff5722;
+            text-decoration: underline;
             font-weight: bold;
         }
         a.event-link {
             color: #9c27b0;
+            text-decoration: underline;
             font-weight: bold;
         }
         .tag {
@@ -189,9 +189,8 @@
     <div class="day-card">
         <div class="day-title">📅 7月30日 (四) ｜ 藍山國家公園</div>
         <ul>
-            <li><strong>全天</strong>：參加 <a class="klook-link" href="https://www.klook.com/zh-HK/experiences/booking_detail/?guid=5574879401&bookingNo=BFA769816&sub_category_id=2" target="_blank">澳洲悉尼藍山一日遊(中文團) 🔗 Klook 預訂</a> 前往 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Blue+Mountains+National+Park" target="_blank">藍山國家公園</a> 欣賞三姊妹岩。</li>
+            <li><strong>全天</strong>：參加 <a class="klook-link" href="https://www.klook.com/zh-HK/experiences/booking_detail/?guid=5574879401&bookingNo=BFA769816&sub_category_id=2" target="_blank">澳洲悉尼藍山一日遊(中文團) 🔗 [點擊前往 Klook 預訂]</a> 前往 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Blue+Mountains+National+Park" target="_blank">藍山國家公園</a> 欣賞三姊妹岩。</li>
         </ul>
-        <!-- 嵌入 0730 藍山一日遊憑證圖片 -->
         <img src="0730.png" alt="藍山一日遊 Klook 憑證" class="voucher-img">
     </div>
 
@@ -211,11 +210,10 @@
     <div class="day-card">
         <div class="day-title">📅 8月1日 (六) ｜ 海岸動物・達令港煙火夜</div>
         <ul>
-            <li><strong>白天</strong>：參加 <a class="klook-link" href="https://www.klook.com/zh-HK/activity/207779-sydney-wildlife-park-gerringong-coastal-full-day-tour/?spm=BookingDetail.ActivityCard&clickId=e18466901d" target="_blank">Wildlife Park & Coastal Tour 一日遊 🔗 Klook 預訂</a>。</li>
+            <li><strong>白天</strong>：參加 <a class="klook-link" href="https://www.klook.com/zh-HK/activity/207779-sydney-wildlife-park-gerringong-coastal-full-day-tour/?spm=BookingDetail.ActivityCard&clickId=e18466901d" target="_blank">Wildlife Park & Coastal Tour 一日遊 🔗 [點擊前往 Klook 預訂]</a>。</li>
             <li><strong>19:00</strong>：返回市區，於達令港 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Fratelli+Fresh+Darling+Harbour" target="_blank">Fratelli Fresh</a> 享用義式晚餐。</li>
-            <li><strong>20:30</strong>：觀賞 <a class="event-link" href="https://www.darlingharbour.com/whats-on/campaigns/fireworks" target="_blank">達令港 (Darling Harbour) 週六免費煙火表演 🔗 官方活動詳情</a>。</li>
+            <li><strong>20:30</strong>：觀賞 <a class="event-link" href="https://www.darlingharbour.com/whats-on/campaigns/fireworks" target="_blank">達令港 (Darling Harbour) 週六免費煙火表演 🔗 [點擊查看官方活動詳情]</a>。</li>
         </ul>
-        <!-- 嵌入 0801 野生動物園一日遊憑證圖片 -->
         <img src="0801.png" alt="野生動物園一日遊 Klook 憑證" class="voucher-img">
     </div>
 
